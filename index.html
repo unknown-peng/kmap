@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Map</title>
+    <link rel="stylesheet" href="app.css">
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div>
+        <header>
+            <h1>Karnaugh Map Solver</h1>
+        </header>
+    </div>
+    <main id="container">
+        <div id="input">
+            <form>
+                <h2>Function Info:</h2>
+                <div>
+                    <label for="n_input">Enter the number of Inputs</label>
+                    <input type="text" id="n_input" name="n_input" required>
+                </div>
+                <div>
+                    <label for="minterms">Enter the Minterms</label>
+                    <input type="text" id="minterms" name="minterms" required>
+                </div>
+                <div>
+                    <label for="dntcare">Enter the Dontcares</label>
+                    <input type="text" id="dntcare" name="dntcare">
+                </div>
+                <button onclick="myFunction()">Find</button>
+            </form>
+            <div id="error"></div>
+        </div>
+        <div id="Kmap-table">
+            <!-- test -->
+            <h2>K-Map:</h2>
+            <table id="kmap" class="kmap-table">
+                <tr class="map-row" id="title-row">
+                    <td class="var-label" id="return-variable">f</td>
+                    <td class="column-label"></td>
+                    <td class="var-label" id="col-variables" colspan="4"> c,d</td>
+                </tr>
+                <tr class="map-row" id="binary-label">
+                    <td></td>
+                    <td></td>
+                    <td class="col-label" id="col-00">00</td>
+                    <td class="col-label" id="col-01">01</td>
+                    <td class="col-label" id="col-11">11</td>
+                    <td class="col-label" id="col-10">10</td>
+                </tr>
+                <tr id="row-0" class="kmap-row">
+                    <td class="var-label" id="row-variables">a,b</td>
+                    <td class="row-label" id="row-00">00</td>
+                    <td class="kmap-cell" id="cell-0" style="width: 40px; height: 40px;">
+                        <label class="kmap-cell-label" id="cell-0-label">0</label>
+                    </td>
+
+                    <td class="kmap-cell" id="cell-1" onclick="javascript:cellChange(0, 2, 1, 2)"
+                        style="width: 40px; height: 40px;">
+                        <label class="kmap-cell-label" id="cell-1-label">0</label>
+                    </td>
+
+                    <td class="kmap-cell" id="cell-3" onclick="javascript:cellChange(0, 2, 2, 2)"
+                        style="width: 40px; height: 40px;">
+                        <label class="kmap-cell-label" id="cell-3-label">0</label>
+                    </td>
+
+                    <td class="kmap-cell" id="cell-2" onclick="javascript:cellChange(0, 2, 3, 2)"
+                        style="width: 40px; height: 40px;">
+                        <label class="kmap-cell-label" id="cell-2-label">0</label>
+                    </td>
+                </tr>
+                <tr id="row-1" class="kmap-row">
+                    <td></td>
+                    <td class="row-label" id="row-01">01</td>
+                    <td class="kmap-cell" id="cell-4" onclick="javascript:cellChange(1, 2, 0, 2)"
+                        style="width: 40px; height: 40px;">
+                        <label class="kmap-cell-label" id="cell-4-label">0</label>
+                    </td>
+
+                    <td class="kmap-cell" id="cell-5" onclick="javascript:cellChange(1, 2, 1, 2)"
+                        style="width: 40px; height: 40px;">
+                        <label class="kmap-cell-label" id="cell-5-label">0</label>
+                    </td>
+
+                    <td class="kmap-cell" id="cell-7" onclick="javascript:cellChange(1, 2, 2, 2)"
+                        style="width: 40px; height: 40px;">
+                        <label class="kmap-cell-label" id="cell-7-label">0</label>
+                    </td>
+
+                    <td class="kmap-cell" id="cell-6" onclick="javascript:cellChange(1, 2, 3, 2)"
+                        style="width: 40px; height: 40px;">
+                        <label class="kmap-cell-label" id="cell-6-label">0</label>
+                    </td>
+                </tr>
+                <tr id="row-2" class="kmap-row">
+                    <td></td>
+                    <td class="row-label" id="row-11">11</td>
+                    <td class="kmap-cell" id="cell-12" onclick="javascript:cellChange(2, 2, 0, 2)"
+                        style="width: 40px; height: 40px;">
+                        <label class="kmap-cell-label" id="cell-12-label">0</label>
+                    </td>
+
+                    <td class="kmap-cell" id="cell-13" onclick="javascript:cellChange(2, 2, 1, 2)"
+                        style="width: 40px; height: 40px;">
+                        <label class="kmap-cell-label" id="cell-13-label">0</label>
+                    </td>
+
+                    <td class="kmap-cell" id="cell-15" onclick="javascript:cellChange(2, 2, 2, 2)"
+                        style="width: 40px; height: 40px;">
+                        <label class="kmap-cell-label" id="cell-15-label">0</label>
+                    </td>
+
+                    <td class="kmap-cell" id="cell-14" onclick="javascript:cellChange(2, 2, 3, 2)"
+                        style="width: 40px; height: 40px;">
+                        <label class="kmap-cell-label" id="cell-14-label">0</label>
+                    </td>
+                </tr>
+                <tr id="row-3" class="kmap-row">
+                    <td></td>
+                    <td class="row-label" id="row-10">10</td>
+                    <td class="kmap-cell" id="cell-8" onclick="javascript:cellChange(3, 2, 0, 2)"
+                        style="width: 40px; height: 40px;">
+                        <label class="kmap-cell-label" id="cell-8-label">0</label>
+                    </td>
+
+                    <td class="kmap-cell" id="cell-9" onclick="javascript:cellChange(3, 2, 1, 2)"
+                        style="width: 40px; height: 40px;">
+                        <label class="kmap-cell-label" id="cell-9-label">0</label>
+                    </td>
+
+                    <td class="kmap-cell" id="cell-11" onclick="javascript:cellChange(3, 2, 2, 2)"
+                        style="width: 40px; height: 40px;">
+                        <label class="kmap-cell-label" id="cell-11-label">0</label>
+                    </td>
+
+                    <td class="kmap-cell" id="cell-10" onclick="javascript:cellChange(3, 2, 3, 2)"
+                        style="width: 40px; height: 40px;">
+                        <label class="kmap-cell-label" id="cell-10-label">0</label>
+                    </td>
+                </tr>
+            </table>
+            <!-- test -->
+        </div>
+
+        <div id="output">
+            <h2>Solution:</h2>
+            <div>
+                <label for="outpt">Output</label>
+                <textarea id="outpt" cols="30" rows="6"></textarea>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

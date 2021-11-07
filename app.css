@@ -1,0 +1,142 @@
+@font-face {
+    font-family: Arvo;
+    src: url(fonts/Arvo-Regular.ttf);
+  }
+
+@font-face {
+    font-family: BebasNeue;
+    src: url(fonts/BebasNeue-Regular.ttf);
+}
+
+@font-face {
+    font-family: FiraSans;
+    src: url(fonts/Fira_Sans/FiraSans-Bold.ttf);
+}
+
+*{
+    box-sizing: border-box;
+}
+
+#container{
+    width: 90%;
+    height: 90%;
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* align-items: center; */
+}
+
+
+h1{
+    text-align: center;
+    /* color: rgb(150, 150, 150);
+     */
+     color: #f28482;
+    font-family: FiraSans;
+    letter-spacing: 12px;
+}
+
+h2{
+    color:#84a59d;
+}
+
+body{
+    color:#f7ede2;
+}
+
+#Kmap-table{
+    width: 318px;
+    height: 400px;
+}
+
+#input{
+    width: 320px;
+    height: 500px;
+}
+
+#input,#output,#Kmap-table{
+    font-family: Arvo;
+    letter-spacing: 1.5px;
+}
+
+#input h2,#output h2,#Kmap-table h2{
+    text-align: center;
+    margin-top: 20px;
+}
+#output label,#Kmap-table label{
+    text-align: center;
+}
+#input button{
+    width: 100px;
+    height: 30px;
+    margin-left: 6.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 1.5rem;
+}
+
+label{
+    font-size: 20px;
+    display: block;
+    font-family: Arvo;
+    letter-spacing: 2px;
+}
+
+input{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 300px;
+    height: 35px;
+    font-size: 20px;
+    border-radius: 8px;
+    background-color: rgba(250, 200, 200,0.6);
+}
+
+textarea{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 0.6rem;
+    font-size: 20px;
+    background-color: rgba(250, 200, 200,0.6);
+}
+
+.kmap-cell{
+    text-align: center;
+}
+
+.kmap-row:nth-child(even) .kmap-cell:nth-child(odd),
+.kmap-row:nth-child(odd)  .kmap-cell:nth-child(even) {
+  background-color: #474743;
+}
+
+.kmap-row:nth-child(even) .kmap-cell:nth-child(odd):hover,
+.kmap-row:nth-child(odd)  .kmap-cell:nth-child(even):hover{
+  background-color: rgba(204, 84, 84, 0.6);
+  color: #0d0d0c;
+}
+
+.kmap-row:nth-child(even) .kmap-cell:nth-child(even):hover,
+.kmap-row:nth-child(odd)  .kmap-cell:nth-child(odd):hover{
+  background-color: rgba(219, 63, 63, 0.8);
+  color: #FFFFF0;
+}
+
+table{
+    padding-left: 2.5rem;
+}
+
+button:hover{
+    background-color: #84a59d;
+}
+body{
+    height: 100vh;
+    background-image: radial-gradient(circle at 16% 83%, rgba(148, 148, 148,0.06) 0%,
+rgba(148, 148, 148,0.06) 50%,rgba(63, 63, 63,0.06) 50%, rgba(63, 63, 63,0.06) 100%),
+     radial-gradient(circle at 68% 87%, rgba(66, 66, 66,0.06) 0%, rgba(66, 66, 66,0.06) 50%,
+     rgba(105, 105, 105,0.06) 50%, rgba(105, 105, 105,0.06) 100%),
+     radial-gradient(circle at 38% 50%, rgba(123, 123, 123,0.06) 0%, rgba(123, 123, 123,0.06) 50%,
+     rgba(172, 172, 172,0.06) 50%, rgba(172, 172, 172,0.06) 100%),
+     linear-gradient(90deg, hsl(18,0%,1%),hsl(18,0%,1%));
+}
